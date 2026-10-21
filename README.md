@@ -34,8 +34,13 @@ reason for each one.
   `dynamic_confirmed` came from running the code, and each of those runs is packaged as a
   Docker image: one command, no clone and no account.
 
+## Docker images
 
+The deduplicated, dynamically confirmed samples of each corpus are packaged as Docker images on Docker Hub:
 
+- Big-Vul: <https://hub.docker.com/repository/docker/vulvalidate/bigvul-repro/general>
+- PrimeVul: <https://hub.docker.com/repository/docker/vulvalidate/primevul-repro/general>
+- DiverseVul: <https://hub.docker.com/repository/docker/vulvalidate/diversevul-repro/general>
 
 More will be added to this repository.
 
