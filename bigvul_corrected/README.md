@@ -10,12 +10,12 @@ the train/validation/test split of that version.
 Every row keeps its Big-Vul row index (`idx`, `id = bigvul:<idx>`), so any result can be traced
 back to the release.
 
-| split | rows | vulnerable | vulnerable/fixed pairs |
-|---|---|---|---|
-| train | 145,766 | 3,537 | 3,537 |
-| valid | 18,245 | 439 | 439 |
-| test | 18,243 | 436 | 436 |
-| total | 182,254 | 4,412 | 4,412 |
+| split | rows | vulnerable |
+|---|---|---|
+| train | 145,766 | 3,537 |
+| valid | 18,245 | 439 |
+| test | 18,243 | 436 |
+| total | 182,254 | 4,412 |
 
 Rules of the split (`split/stats.json` holds the full settings):
 

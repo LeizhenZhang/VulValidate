@@ -72,19 +72,18 @@ non-vulnerable. `build_record.json` lists them as `kept_bigvul_twin`.
 
 `split/` pools the kept rows of the three files and cuts them again.
 
-| split | rows | vulnerable | vulnerable/fixed pairs |
-|---|---|---|---|
-| train | 178,770 | 4,383 | 3,227 |
-| valid | 22,379 | 607 | 438 |
-| test | 22,314 | 547 | 379 |
-| total | 223,463 | 5,537 | 4,044 |
+| split | rows | vulnerable |
+|---|---|---|
+| train | 178,770 | 4,383 |
+| valid | 22,379 | 607 |
+| test | 22,314 | 547 |
+| total | 223,463 | 5,537 |
 
 - Random 80/10/10 cut with seed 42.
 - Functions whose bodies are equal after removing C/C++ comments and all whitespace are kept
   in one split. `split/stats.json` confirms that 0 such bodies occur in more than one split.
 - Pairs come from the release's own `primevul_*_paired.jsonl` files, and both members of a
-  pair are always in the same split. 4,109 of the release's 4,704 pairs have both members in
-  this version. In 65 of them the vulnerable member's label became 0, which leaves 4,044 pairs.
+  pair are always in the same split.
 
 `split/` holds `{train,valid,test}.jsonl.gz` with every field of the release,
 `{train,valid,test}_paired.jsonl.gz` with each pair as two consecutive lines
