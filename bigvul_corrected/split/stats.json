@@ -1,0 +1,86 @@
+{
+  "version": "v1_dynamic_attacked",
+  "source": "MSR_data_cleaned_relabelled.csv of this subset",
+  "built_utc": "2026-10-22T05:13:16+00:00",
+  "seed": 42,
+  "ratios": {
+    "train": 0.8,
+    "valid": 0.1,
+    "test": 0.1
+  },
+  "shuffle": "random.Random(seed).shuffle over units (a vulnerable row and its fixed partner form one unit), then cut in order; units sharing a normalized body are merged into one group first",
+  "stratified": false,
+  "total_rows": 182254,
+  "units": 182254,
+  "group_normalized": true,
+  "groups": 180122,
+  "input_format": "bigvul_msr_csv (func = func_before, target = vul)",
+  "pair_info": {},
+  "leakage": {
+    "normalized_key": "sha1(func with C/C++ comments and all whitespace removed)",
+    "distinct_normalized_bodies": 180122,
+    "bodies_in_more_than_one_split": 0,
+    "func_after_of_target1_matching_func_before_in_another_split": {
+      "train": 127,
+      "test": 63,
+      "valid": 63
+    }
+  },
+  "rows": {
+    "train": 145766,
+    "valid": 18245,
+    "test": 18243
+  },
+  "labels": {
+    "train": {
+      "0": 142229,
+      "1": 3537
+    },
+    "valid": {
+      "0": 17806,
+      "1": 439
+    },
+    "test": {
+      "0": 17807,
+      "1": 436
+    }
+  },
+  "positive_rate": {
+    "train": 0.024264917744878777,
+    "valid": 0.024061386681282545,
+    "test": 0.023899577920298197
+  },
+  "complete_pairs": {
+    "train": 3537,
+    "valid": 439,
+    "test": 436
+  },
+  "label_source": {
+    "train": {
+      "<unknown>": 145766
+    },
+    "valid": {
+      "<unknown>": 18245
+    },
+    "test": {
+      "<unknown>": 18243
+    }
+  },
+  "row_fields": [
+    "idx",
+    "id",
+    "dataset",
+    "source_index",
+    "label_source",
+    "pair_of",
+    "pair_row",
+    "target",
+    "func"
+  ],
+  "paired_files": {
+    "train": "train_paired.jsonl (two lines per pair: func_fix_before then func_fix_after)",
+    "valid": "valid_paired.jsonl (two lines per pair: func_fix_before then func_fix_after)",
+    "test": "test_paired.jsonl (two lines per pair: func_fix_before then func_fix_after)"
+  },
+  "note": "Every release row is kept (no deduplication); with --group-normalized, rows whose function body is equal after removing comments and all whitespace share a split."
+}

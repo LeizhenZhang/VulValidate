@@ -1,59 +1,84 @@
 {
- "mode": "labels-only: every release row kept, no cross-dataset dedup",
- "built_utc": "2026-09-29T22:04:44+00:00",
+ "mode": "subset: only rows the VulValidate corpus keeps or decides through an identical body; rows without a dynamic verdict and conflict rows are removed",
+ "built_utc": "2026-10-22T05:25:21+00:00",
  "label_authority": "the VulValidate merged corpus in this repository's combined_dataset/ folder",
  "content_source": "the primevul release",
- "output": "the release's three jsonl files, row for row",
- "join_key": "PrimeVul idx, global across the three release files",
- "partition_policy": "the release's own three files are preserved row for row",
- "conflict_policy": "flip",
- "conflict_rows": 198,
- "conflict_rows_with_a_winner": 198,
- "dedup_target_checks": {
-  "groups_agreeing": 208376,
-  "groups_disagreeing": 0,
-  "survivors_v6_also_excluded": 578
+ "output": "primevul_corrected/ in this repository",
+ "join_key": "v6 source_index == PrimeVul idx, global across the three files",
+ "idx_key_checks": {
+  "duplicates_within_a_file": 0,
+  "overlap_between_files": 0,
+  "release_distinct_idx": 224533
  },
- "verdict_sources": {
-  "v6_kept": 142559,
-  "label_conflict": 198,
-  "dedup_twin": 81183,
-  "twin_also_excluded": 213
- },
+ "partition_policy": "the release's own train/valid/test files are preserved; v6's partition for each surviving row is recorded in v6_split_assignment.csv instead of being imposed here",
  "counts_total": {
   "rows_read": 224533,
-  "unchanged_no_v6_verdict": 380,
-  "rows_written": 224533,
-  "kept": 223655,
-  "relabelled": 87,
-  "unchanged_twin_also_excluded": 213,
-  "conflict_flipped": 198
+  "dropped_not_kept_by_v6": 872,
+  "kept_bigvul_twin": 80904,
+  "kept_bigvul_twin_label_unchanged": 80890,
+  "rows_written": 223463,
+  "label_unchanged": 142486,
+  "label_changed": 73,
+  "kept_bigvul_twin_label_changed": 14,
+  "dropped_label_conflict": 198
  },
  "counts_per_release_split": {
   "train": {
    "rows_read": 175797,
-   "unchanged_no_v6_verdict": 328,
-   "rows_written": 175797,
-   "kept": 175042,
-   "relabelled": 75,
-   "unchanged_twin_also_excluded": 213,
-   "conflict_flipped": 139
+   "dropped_not_kept_by_v6": 726,
+   "kept_bigvul_twin": 80029,
+   "kept_bigvul_twin_label_unchanged": 80015,
+   "rows_written": 174932,
+   "label_unchanged": 94842,
+   "label_changed": 61,
+   "kept_bigvul_twin_label_changed": 14,
+   "dropped_label_conflict": 139
   },
   "valid": {
    "rows_read": 23948,
-   "kept": 23879,
-   "rows_written": 23948,
-   "relabelled": 7,
-   "unchanged_no_v6_verdict": 26,
-   "conflict_flipped": 36
+   "kept_bigvul_twin": 371,
+   "kept_bigvul_twin_label_unchanged": 371,
+   "rows_written": 23833,
+   "label_unchanged": 23455,
+   "label_changed": 7,
+   "dropped_not_kept_by_v6": 79,
+   "dropped_label_conflict": 36
   },
   "test": {
    "rows_read": 24788,
-   "kept": 24734,
-   "rows_written": 24788,
-   "relabelled": 5,
-   "unchanged_no_v6_verdict": 26,
-   "conflict_flipped": 23
+   "kept_bigvul_twin": 504,
+   "kept_bigvul_twin_label_unchanged": 504,
+   "rows_written": 24698,
+   "label_unchanged": 24189,
+   "label_changed": 5,
+   "dropped_not_kept_by_v6": 67,
+   "dropped_label_conflict": 23
   }
+ },
+ "v6_primevul_rows": 142559,
+ "v6_idx_absent_from_release": 0,
+ "label_conflicts_primevul": 374,
+ "label_conflicts_release_rows": 198,
+ "label_conflicts_fixed_bodies": 176,
+ "conflict_ids_kept_by_v6": 0,
+ "fixed_bodies_written_separately": 3183,
+ "label_breakdown": {
+  "original_non_vulnerable|target=0": 138846,
+  "dynamic_confirmed|target=1": 3640,
+  "dynamic_label_noise_corrected|target=0": 73
+ },
+ "bigvul_twin_policy": "PrimeVul rows that v6 dropped as dedup twins of a BigVul row it keeps are kept, with that BigVul row's target and label_source (2026-10-22)",
+ "bigvul_twins_kept": 80904,
+ "bigvul_twin_label_breakdown": {
+  "original_non_vulnerable|target=0": 77003,
+  "fixed_function_of_confirmed|target=0": 1990,
+  "dynamic_confirmed|target=1": 1897,
+  "dynamic_label_noise_corrected|target=0": 14
+ },
+ "label_breakdown_written": {
+  "dynamic_confirmed|target=1": 5537,
+  "dynamic_label_noise_corrected|target=0": 87,
+  "original_non_vulnerable|target=0": 215849,
+  "fixed_function_of_confirmed|target=0": 1990
  }
 }

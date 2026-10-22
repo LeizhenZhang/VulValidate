@@ -1,31 +1,54 @@
 {
- "mode": "labels-only: every release row kept, no cross-dataset dedup",
- "built_utc": "2026-09-29T22:05:24+00:00",
+ "mode": "subset: only rows the VulValidate corpus keeps or decides through an identical body; rows without a dynamic verdict and conflict rows are removed",
+ "built_utc": "2026-10-22T05:35:39+00:00",
  "label_authority": "the VulValidate merged corpus in this repository's combined_dataset/ folder",
  "content_source": "the diversevul release",
- "output": "diversevul_20230702.json, row for row",
- "join_key": "line number of the release file",
- "dedup_target_checks": {
-  "groups_agreeing": 208376,
-  "groups_disagreeing": 0,
-  "survivors_v6_also_excluded": 578
- },
- "conflict_policy": "flip",
- "conflict_rows": 146,
- "conflict_rows_with_a_winner": 146,
- "verdict_sources": {
-  "v6_kept": 198066,
-  "label_conflict": 146,
-  "dedup_twin": 125817,
-  "twin_also_excluded": 80
- },
+ "output": "diversevul_corrected/ in this repository",
+ "join_key": "v6 source_index 'L<line>' -> line number of the release file",
+ "line_join_verified_on_rows": 12563,
+ "line_join_mismatches": 0,
  "counts": {
   "rows_read": 330492,
-  "kept": 321881,
-  "rows_written": 330492,
-  "unchanged_no_v6_verdict": 6383,
-  "relabelled": 2002,
-  "conflict_flipped": 146,
-  "unchanged_twin_also_excluded": 80
+  "label_unchanged": 196089,
+  "rows_written": 323874,
+  "kept_dedup_twin": 125808,
+  "kept_dedup_twin_of_primevul": 125807,
+  "kept_dedup_twin_label_unchanged": 125783,
+  "kept_dedup_twin_fixed_body_copied": 2342,
+  "dropped_not_kept_by_v6": 6472,
+  "kept_dedup_twin_label_changed": 25,
+  "label_changed": 1977,
+  "kept_dedup_twin_vulnerable_without_fixed_body": 381,
+  "dropped_label_conflict": 146,
+  "kept_dedup_twin_of_bigvul": 1
+ },
+ "v6_diversevul_rows": 198066,
+ "v6_lines_absent_from_release": 0,
+ "label_conflicts_diversevul": 782,
+ "label_conflicts_release_rows": 146,
+ "label_conflicts_fixed_bodies": 636,
+ "conflict_lines_kept_by_v6": 0,
+ "fixed_bodies_written_separately": 9491,
+ "fixed_bodies_own": 7149,
+ "fixed_bodies_copied_from_kept_copy": 2342,
+ "label_breakdown": {
+  "dynamic_confirmed|target=1": 7838,
+  "dynamic_label_noise_corrected|target=0": 1977,
+  "original_non_vulnerable|target=0": 188251
+ },
+ "dedup_twin_policy": "DiverseVul rows that v6 dropped as dedup twins of a BigVul or PrimeVul row it keeps are kept, with that row's target and label_source (2026-10-22)",
+ "dedup_twins_kept": 125808,
+ "dedup_twin_label_breakdown": {
+  "kept_in_bigvul|original_non_vulnerable|target=0": 1,
+  "kept_in_primevul|dynamic_confirmed|target=1": 2723,
+  "kept_in_primevul|fixed_function_of_confirmed|target=0": 238,
+  "kept_in_primevul|dynamic_label_noise_corrected|target=0": 12,
+  "kept_in_primevul|original_non_vulnerable|target=0": 122834
+ },
+ "label_breakdown_written": {
+  "dynamic_confirmed|target=1": 10561,
+  "dynamic_label_noise_corrected|target=0": 1989,
+  "original_non_vulnerable|target=0": 311086,
+  "fixed_function_of_confirmed|target=0": 238
  }
 }

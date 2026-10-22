@@ -1,28 +1,28 @@
 {
- "mode": "labels-only: every release row kept, no cross-dataset dedup",
- "built_utc": "2026-09-29T22:12:35+00:00",
+ "mode": "subset: only rows the VulValidate corpus keeps or decides through an identical body; rows without a dynamic verdict and conflict rows are removed",
+ "built_utc": "2026-09-29T21:54:45+00:00",
  "label_authority": "the VulValidate merged corpus in this repository's combined_dataset/ folder",
  "content_source": "MSR_data_cleaned.csv from the Big-Vul release",
- "output": "MSR_data_cleaned_labels_only.csv",
- "dedup_target_checks": {
-  "groups_agreeing": 208376,
-  "groups_disagreeing": 0,
-  "survivors_v6_also_excluded": 578
- },
- "conflict_policy": "flip",
- "conflict_rows": 1024,
- "conflict_rows_with_a_winner": 1024,
- "verdict_sources": {
-  "v6_kept": 182254,
-  "label_conflict": 1024,
-  "dedup_twin": 2
- },
+ "why_not_the_sibling": "the sibling MSR_data_cleaned_relabelled.csv already applied a different policy and dropped 2,783 rows; reading it as the base would fold that policy in",
+ "output": "MSR_data_cleaned_relabelled.csv (182,254 rows; this folder ships its train/valid/test split)",
  "counts": {
   "rows_read": 188636,
-  "kept": 181124,
-  "rows_written": 188636,
-  "conflict_flipped": 1024,
-  "unchanged_no_v6_verdict": 5356,
-  "relabelled": 1132
+  "label_unchanged": 181124,
+  "rows_written": 182254,
+  "dropped_label_conflict": 1024,
+  "dropped_not_kept_by_v6": 5358,
+  "label_changed": 1130
+ },
+ "v6_bigvul_rows": 182254,
+ "v6_ids_absent_from_msr": 0,
+ "label_conflicts_bigvul": 1333,
+ "label_conflicts_own_rows": 1024,
+ "label_conflicts_fixed_bodies": 309,
+ "conflict_ids_kept_by_v6": 0,
+ "fixed_bodies_written_separately": 4380,
+ "label_breakdown": {
+  "original_non_vulnerable|target=0": 176712,
+  "dynamic_confirmed|target=1": 4412,
+  "dynamic_label_noise_corrected|target=0": 1130
  }
 }
