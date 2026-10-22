@@ -76,12 +76,12 @@ VulValidate or in the PrimeVul release, so they form no pair.
 
 ## The split
 
-| split | rows | vulnerable | vulnerable/fixed pairs |
-|---|---|---|---|
-| train | 259,126 | 8,421 | 7,552 |
-| valid | 32,385 | 1,062 | 958 |
-| test | 32,363 | 1,078 | 981 |
-| total | 323,874 | 10,561 | 9,491 |
+| split | rows | vulnerable |
+|---|---|---|
+| train | 259,126 | 8,421 |
+| valid | 32,385 | 1,062 |
+| test | 32,363 | 1,078 |
+| total | 323,874 | 10,561 |
 
 - Random 80/10/10 cut with seed 42.
 - Functions whose bodies are equal after removing C/C++ comments and all whitespace are kept
